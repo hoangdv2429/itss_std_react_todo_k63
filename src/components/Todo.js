@@ -19,7 +19,7 @@ import useStorage from '../hooks/storage';
 import {getKey} from "../lib/util";
 
 function Todo() {
-  const [items, putItems] = React.useState([
+  const [items, putItems] = useState([
       /* テストコード 開始 */
     { key: getKey(), text: '日本語の宿題', done: false },
     { key: getKey(), text: 'reactを勉強する', done: false },
@@ -37,16 +37,20 @@ function Todo() {
     putItems(newItem);
   }
 
+  const handleEnter = (event) => {
+    putItems(items => [
+      ...items,
+      {key:getKey(), text:event.target.value, done:false}
+    ])
+  }
+
   return (
     <div className="panel">
       <div className="panel-heading">
         ITSS ToDoアプリ
       </div>
+      <Input onSubmit={handleEnter}></Input>
       {items.map(item => (
-        // <label className="panel-block">
-        //     <input type="checkbox" />
-        //     {item.text}
-        // </label>
         <TodoItem key={item.key} item={item} onCheck={handleCheck}/>
       ))}
       <div className="panel-block">
