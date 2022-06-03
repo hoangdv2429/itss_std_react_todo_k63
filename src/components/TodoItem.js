@@ -7,10 +7,8 @@
 function TodoItem( { item } ) {
   return (
     <label className="panel-block">
-      <label className="panel-block">
         <input type="checkbox" />
         {item.text}
-      </label>
     </label>
   );
 }
