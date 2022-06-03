@@ -27,6 +27,16 @@ function Todo() {
     /* テストコード 終了 */
   ]);
 
+  const handleCheck = (changedItem, checked) => {
+    const newItem = items.map(item => {
+      if (item.key === changedItem.key) {
+        item.done = checked;
+      }
+      return item;
+    });
+    putItems(newItem);
+  }
+
   return (
     <div className="panel">
       <div className="panel-heading">
@@ -37,7 +47,7 @@ function Todo() {
         //     <input type="checkbox" />
         //     {item.text}
         // </label>
-        <TodoItem key={item.key} item={item} />
+        <TodoItem key={item.key} item={item} onCheck={handleCheck}/>
       ))}
       <div className="panel-block">
         {items.length} items
