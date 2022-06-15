@@ -40,7 +40,7 @@ function Todo() {
     setFilter(value);
   }
 
-  const handleCheck = (changedItem, checked) => {
+  const handleCheck = (changedItem, isCheck) => {
     const newItem = items.map(item => {
       if (item.key === changedItem.key) {
         item.done = isCheck;
