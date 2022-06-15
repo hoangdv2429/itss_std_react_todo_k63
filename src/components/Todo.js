@@ -43,7 +43,7 @@ function Todo() {
   const handleCheck = (changedItem, checked) => {
     const newItem = items.map(item => {
       if (item.key === changedItem.key) {
-        item.done = !item.done;
+        item.done = isCheck;
       }
       return item;
     });
